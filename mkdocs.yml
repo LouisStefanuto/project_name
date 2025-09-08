@@ -1,0 +1,47 @@
+site_name: Home
+
+theme:
+  name: 'material'
+  favicon: assets/images/favicon.png
+  logo: assets/images/logo.png
+  features:
+    - content.code.copy
+    - navigation.sections
+
+extra_css:
+  - stylesheets/extra.css
+
+use_directory_urls: false
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mkdocstrings
+
+markdown_extensions:
+  - mkdocs-typer
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - sane_lists
+
+nav:
+  - Introduction: index.md
+  - Installation: install.md
+  - Tutorials:
+    - Run with Docker: tutorials/docker.md
+    - Run unit tests: tutorials/testing.md
+  - References:
+    - Auto-generate references: references/auto_doc_tools.md
+    - API reference: reference/  # note that reference is a folder created by mkdocstrings
+    - CLI reference: references/cli_api_reference.md
+  - Contributing:
+    - Documentation: contributing/documentation.md
+    - Dev tools: contributing/dev_tools.md
